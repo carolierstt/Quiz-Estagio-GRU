@@ -210,7 +210,7 @@ function shuffle(arr) {
 }
 
 async function fetchPlayerData(email) {
-  if (SHEET_URL === "https://script.google.com/macros/s/AKfycbyNsy5w4dWmhA_my-llXHi9huCia0Sca5vk91NhpaLr0CNwH8TXyUFBIFrbuddqYzKmjg/exec") return null;
+  if (!SHEET_URL || SHEET_URL === "COLE_SUA_URL_AQUI") return null;
   try {
     const r = await fetch(`${SHEET_URL}?action=getPlayer&email=${encodeURIComponent(email)}`);
     const d = await r.json();
@@ -219,7 +219,7 @@ async function fetchPlayerData(email) {
 }
 
 async function savePlayerData(data) {
-  if (SHEET_URL === "https://script.google.com/macros/s/AKfycbyNsy5w4dWmhA_my-llXHi9huCia0Sca5vk91NhpaLr0CNwH8TXyUFBIFrbuddqYzKmjg/exec") return;
+  if (!SHEET_URL || SHEET_URL === "COLE_SUA_URL_AQUI") return;
   try {
     await fetch(SHEET_URL, {
       method:"POST",
@@ -229,7 +229,7 @@ async function savePlayerData(data) {
 }
 
 async function fetchRanking() {
-  if (SHEET_URL === "https://script.google.com/macros/s/AKfycbyNsy5w4dWmhA_my-llXHi9huCia0Sca5vk91NhpaLr0CNwH8TXyUFBIFrbuddqYzKmjg/exec") return [];
+  if (SHEET_URL === "COLE_SUA_URL_AQUI") return [];
   try {
     const r = await fetch(`${SHEET_URL}?action=getRanking`);
     const d = await r.json();
@@ -385,7 +385,7 @@ async function showRanking() {
   const list = document.getElementById('rank-list');
   list.innerHTML = '<div class="empty">Carregando ranking...</div>';
 
-  if (SHEET_URL === "https://script.google.com/macros/s/AKfycbyNsy5w4dWmhA_my-llXHi9huCia0Sca5vk91NhpaLr0CNwH8TXyUFBIFrbuddqYzKmjg/exec") {
+  if (SHEET_URL === "COLE_SUA_URL_AQUI") {
     list.innerHTML = '<div class="empty">⚠️ Configure a URL do Google Sheets para ver o ranking.</div>';
     return;
   }
